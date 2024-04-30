@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	 
+	<title>Singularity工作室 - 作品</title>
+	<meta name="generator" content="Jekyll v3.9.0" />
+	<meta property="og:title" content="创新工作室" />
+	<meta property="og:locale" content="zh_CN" />
+	<meta name="description" content="创新工作室 | 游戏是艺术的集合" />
+	<meta property="og:description" content="创新工作室 | 游戏是艺术的集合" />
+	<link rel="canonical" href="https://studio.pages.dev/" />
+	<meta property="og:url" content="https://studio.pages.dev/" />
+	<meta property="og:site_name" content="Innovation Studio" />
+
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="always" name="referrer" />
+	<meta name="theme-color" content="#157878" />
+	
+	<link rel="stylesheet" href="css/index.css" />
+	
+	<!-- DaoVoice -->
+	<script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/00efc38c.js","daovoice")</script>
+	<script async defer>
+		daovoice('init', {
+			app_id: "00efc38c"
+		});
+		daovoice('update');
+	</script>
+	
+	<!-- gitter -->
+	<script defer>
+		((window.gitter = {}).chat = {}).options = {
+			room: 'wzh656/Studio'
+		};
+	</script>
+	<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+	
+	<!-- 百度统计 -->
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+		var hm = document.createElement("script");
+		hm.src = "https://hm.baidu.com/hm.js?810c7e8d2bb50f53069219856e2d32fd";
+		var s = document.getElementsByTagName("script")[0]; 
+		s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+	
+	<!-- Google Ads -->
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7578417515774173" crossorigin="anonymous"></script>
+	
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-E23K6GHTX7"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	
+	gtag('config', 'G-E23K6GHTX7');
+	</script>
+	
+	<script src="js/vue3.js"></script>
+	
+</head>
+<body>
+<app>
+	<section>
+		<header id="header">
+			<a id="back" href="index.html">
+				<svg style="fill: white;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 80">
+					<polygon points="50 0, 0 50, 20 50, 20 80, 80 80, 80 50, 100 50" />
+				</svg>
+			</a>
+			<h1>Singularity工作室</h1>
+			<p>作品：{{work || "？"}}</p>
+		</header>
+		<img id="icon" v-if="work" :src="data[work].icon" />
+		<div id="text" v-if="work">
+			<h2 v-text="work"></h2>
+			<div v-html="data[work].description"></div>
+			<ul class="information">
+				<li v-html="data[work].author"></li>
+			</ul>
+			<h2 v-if="data[work].links">链接</h2>
+			<ul class="links">
+				<li v-for="(link, text) in data[work].links">
+					<a target="_blank" :href="link">{{text}}<br>({{link}})</a>
+				</li>
+			</ul>
+		</div>
+		<div id="error" v-if="!work">
+			<h2>Not Found</h2>
+			<p>抱歉，Singularity工作室的作品中并没有找到“{{work}}”哦，也许她走丢了呢</p>
+			<a href="index.html">返回主页</a>
+		</div>
+		<footer>
+				Copyright © 2024 Singularity工作室 All rights reserved.
+		</footer>
+	</section>
+</app>
+
+<script>
+location.getQueryString = function(name){
+	var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	var r = location.search.substr(1).match(reg);
+	if(r!=null) return decodeURIComponent(r[2]);
+};
+
+const app = Vue.createApp({
+	data(){
+		return {
+			data: {
+				"4D五子棋": {
+					icon: "./img/works/4D-Gobang.png",
+					description: "<p>创新与经典的烧脑结合，体验与众不同的五子棋玩法</p>",
+					author: "<b>作者</b>：かみ",
+					links: {
+						"TapTap": "https://taptap.cn/app/222701/",
+						"网页版游玩1(Netlify)": "https://4d-gobang.netlify.app/",
+						"网页版游玩2(Cloudflare)": "https://4d-gobang.pages.dev/",
+						"网页版游玩3(GitHub)": "https://wzh656.github.io/gobang/",
+						"GitHub 项目": "https://github.com/wzh656/gobang/",
+						"Gitee 项目": "https://gitee.com/wzh656/gobang/",
+						"GitLab 项目": "https://gitlab.com/wzh656/gobang/"
+					}
+				},
+				"我的世界（仿）": {
+					icon: "./img/works/MinecraftWeb.png",
+					description: 
+						`<p>一个独具创新与真实特色的我的世界风格仿制版游戏<del>（黑历了啊啊）</del></p>
+						<p>支持<i>Android/Window/浏览器</i>平台</p>
+						<p>了解更多请前往官网链接</p>`,
+					author: "<b>作者</b>：かみ",
+					links: {
+						"安装包下载(蓝奏云 密码wzh)": "https://wwm.lanzouj.com/b02j8yogj",
+						"安装包下载(腾讯微云)": "https://share.weiyun.com/WkQTgj8H",
+						"网页版游玩1(Netlify)": "https://minecraftweb.netlify.app/",
+						"网页版游玩2(Cloudflare)": "https://myminecraft.pages.dev/",
+						"网页版游玩3(GitHub)": "https://wzh656.github.io/MinecraftWeb/",
+						"网页版游玩4(Gitee旧版 由Jason克隆)": "https://jason-bowen-zheng.gitee.io/MinecraftWeb/",
+						"GitHub 项目": "https://github.com/wzh656/MinecraftWeb/",
+						"Gitee 项目": "https://gitee.com/wzh656/Minecraft/",
+						"GitLab 项目": "https://gitlab.com/wzh656/MinecraftWeb/"
+					}
+				},
+				"三体运动模拟": {
+					icon: "./img/works/Threebody-Simulation.png",
+					description: "<p>三体问题的计算机三维动画效果演示</p>",
+					author: "<b>作者</b>：かみ",
+					links: {
+						"网页版游玩(GitHub)": "https://wzh656.github.io/threebody-simulation/",
+						"网页版游玩(版本2)": "https://wzh656.github.io/others/ThreeBody.html",
+						"GitHub 项目": "https://github.com/wzh656/threebody-simulation/",
+						"Gitee 项目": "https://gitee.com/wzh656/threebody-simulation/"
+					}
+				},
+				"化学Helper": {
+					icon: "./img/works/Chemistry-Helper.png",
+					description: "<p>学生党专用的化学(及数学)工具（初三拙作）</p>",
+					author: "<b>作者</b>：かみ",
+					links: {
+						"网页版(GitHub)": "https://wzh656.github.io/others/some/chemistry.html"
+					}
+				},
+				"超级绘图": {
+					icon: "./img/works/Draw.png",
+					description: "<p>一个学生党专用的函数绘图工具</p>",
+					author: "<b>作者</b>：かみ",
+					links: {
+						"安卓下载(蓝奏云 密码wzh)": "https://wwdd.lanzoue.com/b02jznmtg",
+						"网页版(GitHub)": "https://wzh656.github.io/others/draw.html"
+					}
+				},
+				"Js Plus": {
+					icon: "./img/works/Js-Plus.png",
+					description: "<p>js+ 是一个js的拓展库，根据实践经验在原生js的基础上添加、重写了一些函数，并借鉴了一些其他语言的函数，使得编程更加便捷。</p>",
+					author: "<b>作者</b>：かみ",
+					links: {
+						"GitHub 项目": "https://github.com/wzh656/js-plus/",
+						"Gitee 项目": "https://gitee.com/wzh656/js-plus/"
+					}
+				},
+				"质因数分解": {
+					icon: "./img/works/PrimeFactorization.png",
+					description: "<p>计算质因数分解和欧拉质数公式的工具</p>",
+					author: "<b>作者</b>：かみ",
+					links: {
+						"网页版(GitHub)": "https://wzh656.github.io/others/some/PrimeFactorization.html",
+						"GitHub 项目": "https://github.com/wzh656/js-plus/",
+						"Gitee 项目": "https://gitee.com/wzh656/js-plus/"
+					}
+				},
+				"好美的music！高中生自己编曲的bgm": {
+					icon: "./img/works/《天朗气清》.png",
+					description: `
+						<div style="display: flex;">
+							<iframe src="//player.bilibili.com/player.html?bvid=BV1Yo4y1J7Nn&page=1" scrolling="yes" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 100vw; height: 50vw;" ></iframe>
+						</div>`,
+					author: `<b>编曲</b>：wzh<br>
+						<b>混音</b>：wzh<br>
+						<b>插画</b>：AI画师`,
+					links: {
+						"bilibili": "https://www.bilibili.com/video/BV1Yo4y1J7Nn/",
+					}
+				},
+				"【平凡之路】文外G2102红五月活动记": {
+					icon: "./img/works/【平凡之路】文外G2102红五月活动记.png",
+					description: `
+						<div style="display: flex;">
+							<iframe src="//player.bilibili.com/player.html?bvid=BV1BP411D7jV&page=1" scrolling="yes" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 100vw; height: 50vw;" ></iframe>
+						</div>`,
+					author: `
+						<b>二剪辑</b>：かみ（wzh）<br>
+						<b>原剪辑</b>：甲鱼<br>
+						<b>指挥</b>：甲鱼<br>
+						<b>钢琴</b>：wyt<br>
+						<b>木吉他</b>:小流星<br>
+						<b>电吉他</b>：正氣<br>
+						<b>鼓</b>：xzq<br>
+						<b>后台</b>：gjm(Monitor)<br>
+						<b>演唱</b>：G2102全体同学
+					`,
+					links: {
+						"bilibili": "https://www.bilibili.com/video/BV1BP411D7jV/",
+					}
+				},
+				"洛天依演唱会《请让我留下点什么》": {
+					icon: "./img/works/洛天依演唱会《请让我留下点什么》.png",
+					description: `
+						<div style="display: flex;">
+							<iframe src="//player.bilibili.com/player.html?bvid=BV1vY4y1d7yh&page=1" scrolling="yes" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 100vw; height: 50vw;" ></iframe>
+						</div>`,
+					author: `<b>作曲</b>：wzh<br>
+						<b>编曲</b>：wzh<br>
+						<b>填词</b>：睿子<br>
+						<b>演唱</b>：洛天依`,
+					links: {
+						"bilibili": "https://www.bilibili.com/video/BV1vY4y1d7yh/",
+					}
+				},
+				"我的清新动画小剧场 联动我的世界": {
+					icon: "./img/works/我的清新动画小剧场 联动我的世界.png",
+					description: `
+						<div style="display: flex;">
+							<iframe src="//player.bilibili.com/player.html?aid=644285382&bvid=BV1k84y187iK&page=1" scrolling="yes" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 100vw; height: 50vw;" ></iframe>
+						</div>`,
+					author: `<b>导演</b>：かみ<br>
+						<b>剧本</b>：佳佳 & かみ<br>
+						<b>制作</b>：かみ<br><br>
+						<b>声の出演</b><br>
+						<b>Jjj</b> 饰 张清心<br>
+						<b>银子</b> 饰 朱津莹 （本人）<br>
+						<b>佳佳</b> 饰 谢佳航 （本人）<br>
+						<b>Alien</b> 饰 邹平 （本人）<br>
+						<b>Deskgood</b> 饰 叶骞`,
+					links: {
+						"bilibili": "https://www.bilibili.com/video/BV1k84y187iK/",
+					}
+				},
+				"文外G2102高二体育节": {
+					icon: "./img/works/文外G2102高二体育节.png",
+					description: `
+						<div style="display: flex;">
+							<iframe src="//player.bilibili.com/player.html?aid=644285382&bvid=BV1SY4y1Z7FZ&page=1" scrolling="yes" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 100vw; height: 50vw;" ></iframe>
+						</div>`,
+					author: `<b>摄影</b>：かみ & 佳佳 & wxq<br>
+						<b>相机提供</b>：xyt<br>
+						<b>剪辑</b>：かみ`,
+					links: {
+						"bilibili": "https://www.bilibili.com/video/BV1SY4y1Z7FZ/",
+					}
+				},
+				"闹鬼监狱": {
+					icon: "./img/works/闹鬼监狱.jpg",
+					description: `
+						<div style="display: flex;">
+							<iframe src="//player.bilibili.com/player.html?aid=644285382&bvid=BV1jY4y1A76U&page=1" scrolling="yes" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 100vw; height: 50vw;" ></iframe>
+						</div>`,
+					author: "<b>作者</b>：かみ & 佳佳",
+					links: {
+						"bilibili": "https://www.bilibili.com/video/BV1jY4y1A76U/",
+					}
+				},
+				"天朗气清": {
+					icon: "./img/works/Sunny.png",
+					description: `
+						<p>网易云：</p>
+						<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=3&id=2524245944&auto=0&height=66"></iframe>
+						<p>直链：</p>
+						<audio src="https://wzh-data.netlify.app/music/wzh/Sunny.mp3" controls></audio>
+					`,
+					author: "<b>编曲</b>：かみ",
+					links: {
+						"下载": "https://wzh-data.netlify.app/music/wzh/Sunny.mp3"
+					}
+				},
+				"请让我留下点什么(重编曲版)": {
+					icon: "./img/works/music.png",
+					description: `
+						<p>网易云：</p>
+						<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=3&id=2517754483&auto=0&height=66"></iframe>
+						<p>直链：</p>
+						<audio src="https://wzh-data.netlify.app/music/wzh/请让我留下点什么（重编曲版）.mp3" controls></audio>
+					`,
+					author: `<b>作曲</b>：wzh<br>
+						<b>编曲</b>：wzh<br>
+						<b>填词</b>：睿子<br>
+						<b>演唱</b>：洛天依`,
+					links: {
+						"下载": "https://wzh-data.netlify.app/music/wzh/请让我留下点什么（重编曲版）.mp3"
+					}
+				},
+				"请让我留下点什么(live)": {
+					icon: "./img/works/music.png",
+					description: `
+						<p>网易云：</p>
+						<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=3&id=2516799088&auto=0&height=66"></iframe>
+						<p>直链：</p>
+						<audio src="https://wzh-data.netlify.app/music/wzh/请让我留下点什么.mp3" controls></audio>
+					`,
+					author: `<b>作曲</b>：wzh<br>
+						<b>编曲</b>：wzh<br>
+						<b>填词</b>：睿子<br>
+						<b>演唱</b>：洛天依`,
+					links: {
+						"下载": "https://wzh-data.netlify.app/music/wzh/请让我留下点什么.mp3"
+					}
+				},
+				"请让我留下点什么(钢琴版)": {
+					icon: "./img/works/music.png",
+					description: `
+						<p>网易云：</p>
+						<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=3&id=2516277449&auto=0&height=66"></iframe>
+						<p>直链：</p>
+						<audio src="https://wzh-data.netlify.app/music/wzh/Puzzle in the Dream.mp3" controls></audio>
+					`,
+					author: "<b>编曲</b>：かみ",
+					links: {
+						"下载": "https://wzh-data.netlify.app/music/wzh/Puzzle in the Dream.mp3"
+					}
+				},
+				"庭霰梦落": {
+					icon: "./img/works/music.png",
+					description: `
+						<p>网易云：</p>
+						<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=3&id=2516354356&auto=0&height=66"></iframe>
+						<p>直链：</p>
+						<audio src="https://wzh-data.netlify.app/music/wzh/庭霰梦落.mp3" controls></audio>
+					`,
+					author: "<b>编曲</b>：かみ",
+					links: {
+						"下载": "https://wzh-data.netlify.app/music/wzh/庭霰梦落.mp3"
+					}
+				},
+				"青春": {
+					icon: "./img/works/music.png",
+					description: `<audio src="https://wzh-data.netlify.app/music/Louise/piano.mp3" controls></audio>`,
+					author: "<b>作者</b>：Louise",
+					links: {
+						"下载": "https://wzh-data.netlify.app/music/Louise/piano.mp3"
+					}
+				},
+				"下了五场雨后，夏天就结束了": {
+					icon: "./img/works/novel.png",
+					description: `<iframe src="https://wzh-data.netlify.app/novels/谢佳航/下了五场雨后，夏天就结束了.html" style="width: 100%; height: 60vh; border: 1px solid black; box-shadow: 0 0 3px gray;"></iframe>`,
+					author: "<b>作者</b>：寒梦",
+					links: {
+						"网站": "https://wzh-data.netlify.app/novels/谢佳航/下了五场雨后，夏天就结束了.html"
+					}
+				},
+				"薪火永燃": {
+					icon: "./img/works/novel.png",
+					description: `<p>当前章节：「世界线·纷乱战国」</p>
+						<iframe src="https://wzh-data.netlify.app/novels/郭夏航/薪火永燃/世界线·纷乱战国.html" style="width: 100%; height: 60vh; border: 1px solid black; box-shadow: 0 0 3px gray;"></iframe>
+					`,
+					author: "<b>作者</b>：郭夏航",
+					links: {
+						"网站": "https://wzh-data.netlify.app/novels/郭夏航/薪火永燃/世界线·纷乱战国.html"
+					}
+				},
+				"Niki": {
+					icon: "./img/works/model.png",
+					description: `<video src="https://wzh-data.netlify.app/model/Niki/Niki.mp4" autoplay loop controls style="width: 100%;"></video>
+						<p>模型较大，加载需稍等约2~3min</p>
+						<iframe src="https://wzh-data.netlify.app/model/Niki/index.html" style="width: 100%; height: 60vh; border: 1px solid black; box-shadow: 0 0 3px gray;"></iframe>
+					`,
+					author: "<b>作者</b>：wzh",
+					links: {
+						"网站": "https://wzh-data.netlify.app/model/Niki/index.html"
+					}
+				},
+				"张清心の行动": {
+					icon: "./img/works/painting.png",
+					description: `<img src="https://wzh-data.netlify.app/paintings/赖后宜/张清心の行动.jpg" style="width: 100%;" />`,
+					author: "<b>作者</b>：直直"
+				},
+				"博麗": {
+					icon: "./img/works/painting.png",
+					description: `<img src="https://wzh-data.netlify.app/paintings/赖后宜/博麗.jpg" style="width: 100%;" />`,
+					author: "<b>作者</b>：直直"
+				},
+				"手绘二维码": {
+					icon: "./img/works/painting.png",
+					description: `
+						<div style="display: flex; width: 100%; overflow-x: auto;">
+							<img src="https://wzh-data.netlify.app/paintings/手绘二维码/qrcode1.jpg" style="flex: none; width: 90%; height: auto; margin: 1px;" />
+							<img src="https://wzh-data.netlify.app/paintings/手绘二维码/qrcode2.jpg" style="flex: none; width: 90%; height: auto; margin: 1px;" />
+							<img src="https://wzh-data.netlify.app/paintings/手绘二维码/qrcode3.jpg" style="flex: none; width: 90%; height: auto; margin: 1px;" />
+						</div>`,
+					author: "かみ & 直直"
+				}
+			},
+			work: location.getQueryString("work")
+		}
+	},
+	mounted(){
+		document.title = "Singularity工作室 - 作品:" + this.work || "？";
+	}
+}).mount("app");
+</script>
+
+</body>
+</html>
